@@ -1,7 +1,11 @@
 {{#each this}}
 <li class="gallery-item">
     <div class="photo-card">
-        <img src="{{webformatURL}}" alt="{{type}}" />
+        <img src="{{webformatURL}}" alt="{{type}} by {{user}}" />
+
+        <div class="full-screen-img">
+            <i class="material-icons" id="js-icon-fullscreen">open_with</i>
+        </div>
 
         <div class="stats">
             <p class="stats-item">
@@ -24,3 +28,15 @@
     </div>
 </li>
 {{/each}}
+
+{{!-- <div class="lightbox js-lightbox">
+    <div class="lightbox__overlay"></div>
+
+    <div class="lightbox__content">
+        <img class="lightbox__image"
+            src="{{imageURL}}"
+            alt="{{type}} by {{user}}" />
+    </div>
+
+    <button type="button" class="lightbox__button" data-action="close-lightbox"></button>
+</div> --}}
