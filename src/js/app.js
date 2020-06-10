@@ -1,9 +1,11 @@
 'use strict';
 
-const debounce = require('lodash.debounce');
+// const debounce = require('lodash.debounce');
 
 import createImageCards from '../templates/img-card-temp.hbs';
 import apiService from './apiService';
+// import * as basicLightbox from 'basiclightbox';
+// import PNotify from '@pnotify/dist/PNotify.js';
 
 const refs = {
   gallery: document.querySelector('#gallery'),

@@ -10,10 +10,11 @@
 </head>
 
 <body>
-
-  <form class="search-form" id="search-form">
-    <input type="text" name="query" autocomplete="off" placeholder="Search images..." />
-  </form>
+  <header class="header">
+    <form class="search-form" id="search-form">
+      <input type="text" name="query" class="input-query" autocomplete="off" placeholder="Search images..." />
+    </form>
+  </header>
 
   <ul class="gallery" id="gallery">
     <!-- Список <li> с карточками изображений -->
@@ -92,7 +93,9 @@
     <button type="button" class="lightbox__button" data-action="close-lightbox"></button>
   </div> -->
 
-  <button class="button" id="load-btn">Load more</button>
+  <footer class="footer">
+    <button class="button-load" id="load-btn">Load more</button>
+  </footer>
 
 </body>
 
