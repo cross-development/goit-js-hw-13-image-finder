@@ -98,8 +98,8 @@ input:focus:-ms-input-placeholder {
   display: grid;
   /* width: 1200px; */
   width: 90vw;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-  grid-auto-rows: 240px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-auto-rows: 220px;
   grid-gap: 10px;
   padding: 4.5% 0;
   list-style: none;

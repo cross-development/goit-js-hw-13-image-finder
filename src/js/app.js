@@ -1,6 +1,6 @@
 'use strict';
 
-// const debounce = require('lodash.debounce');
+const debounce = require('lodash.debounce');
 
 import createImageCards from '../templates/img-card-temp.hbs';
 import apiService from './apiService';
@@ -11,17 +11,16 @@ const refs = {
   gallery: document.querySelector('#gallery'),
   form: document.querySelector('#search-form'),
   button: document.querySelector('#load-btn'),
-  // input: document.querySelector('input[name="query"]'),
 };
 
-refs.form.addEventListener('submit', searchFromInputHandler);
+refs.form.addEventListener('input', debounce(searchFromInputHandler, 500));
 refs.button.addEventListener('click', loadMoreButtonHandler);
 refs.gallery.addEventListener('click', showModalWindowHandler);
 
 function searchFromInputHandler(e) {
   e.preventDefault();
 
-  const inputValue = e.currentTarget.elements.query.value;
+  const inputValue = e.target.value;
 
   clearListItems();
 
@@ -39,9 +38,8 @@ function insertListItems(items) {
 
   refs.gallery.insertAdjacentHTML('beforeend', markup);
 
-  //! Исправить реализацию скролла с прокрутки в конец экрана на прокрутку на 1 экран (100vh)
   window.scrollTo({
-    top: refs.gallery.clientHeight,
+    top: document.body.clientHeight,
     left: 0,
     behavior: 'smooth',
   });
@@ -57,7 +55,7 @@ function showModalWindowHandler(e) {
   }
 
   const img = e.target.parentElement.previousElementSibling;
-  
+
   const instance = basicLightbox.create(`
       <img src="${img.getAttribute('src')}">
   `);
