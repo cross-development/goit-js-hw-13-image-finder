@@ -13,7 +13,7 @@ const refs = {
   button: document.querySelector('#load-btn'),
 };
 
-refs.form.addEventListener('input', debounce(searchFromInputHandler, 500));
+refs.form.addEventListener('input', debounce(searchFromInputHandler, 700));
 refs.button.addEventListener('click', loadMoreButtonHandler);
 refs.gallery.addEventListener('click', showModalWindowHandler);
 
@@ -39,8 +39,7 @@ function insertListItems(items) {
   refs.gallery.insertAdjacentHTML('beforeend', markup);
 
   window.scrollTo({
-    top: document.body.clientHeight,
-    left: 0,
+    top: document.documentElement.scrollHeight,
     behavior: 'smooth',
   });
 }
