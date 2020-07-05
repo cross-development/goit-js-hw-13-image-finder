@@ -5,7 +5,7 @@ const debounce = require('lodash.debounce');
 import createImageCards from '../templates/img-card-temp.hbs';
 import apiService from './apiService';
 import * as basicLightbox from 'basiclightbox';
-// import PNotify from '@pnotify/dist/PNotify.js';
+import { error, Stack } from '@pnotify/core';
 
 const refs = {
   gallery: document.querySelector('#gallery'),
@@ -26,11 +26,30 @@ function searchFromInputHandler(e) {
 
   apiService.resetPage();
   apiService.searchQuery = inputValue;
-  apiService.fetchImages().then(insertListItems);
+  fetchImagesByApiService();
 }
 
 function loadMoreButtonHandler() {
-  apiService.fetchImages().then(insertListItems);
+  fetchImagesByApiService();
+}
+
+function fetchImagesByApiService() {
+  apiService
+    .fetchImages()
+    .then(insertListItems)
+    .catch(e => {
+      const myStack = new Stack({
+        dir1: 'down',
+        dir2: 'left',
+        firstpos1: 60,
+        firstpos2: -25,
+        context: document.querySelector('.header'),
+      });
+      return error({
+        text: `Images not found. Try again! ${e.message}`,
+        stack: myStack,
+      });
+    });
 }
 
 function insertListItems(items) {
