@@ -2,7 +2,12 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  /* background: #dfe6e9; */
+}
+
+html {
+  box-sizing: border-box;
+  width: 100vw;
+  overflow-x: hidden;
 }
 
 body {
@@ -16,13 +21,15 @@ img {
 }
 
 .header {
+  top: 0;
+  left: 0;
+  position: sticky;
+  z-index: 1100;
   background: #4b4dd4;
   padding: 1em 0;
   display: block;
   margin-bottom: 10px;
-  position: fixed;
-  width: 100vw;
-  z-index: 1000;
+  width: 100%;
 }
 
 .search-form {
@@ -58,6 +65,7 @@ img {
   background: #fff;
   text-transform: uppercase;
   cursor: pointer;
+  outline: none;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
@@ -66,37 +74,9 @@ img {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
-input::-webkit-input-placeholder {
-  opacity: 1;
-  transition: opacity 0.3s ease;
-}
-input::-moz-placeholder {
-  opacity: 1;
-  transition: opacity 0.3s ease;
-}
-input:-moz-placeholder {
-  opacity: 1;
-  transition: opacity 0.3s ease;
-}
-input:-ms-input-placeholder {
-  opacity: 1;
-  transition: opacity 0.3s ease;
-}
-input:focus::-webkit-input-placeholder {
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-input:focus::-moz-placeholder {
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-input:focus:-moz-placeholder {
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-input:focus:-ms-input-placeholder {
-  opacity: 0;
-  transition: opacity 0.3s ease;
+.button-load:focus {
+  background-color: #74b9ff;
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.25), 0 8px 8px rgba(0, 0, 0, 0.22);
 }
 
 .gallery {
@@ -105,7 +85,7 @@ input:focus:-ms-input-placeholder {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-auto-rows: 220px;
   grid-gap: 10px;
-  padding: 4.5% 0;
+  padding: 10px 0;
   list-style: none;
   margin-left: auto;
   margin-right: auto;
@@ -187,83 +167,35 @@ input:focus:-ms-input-placeholder {
   margin-right: 6px;
 }
 
- {
-  /* Lightbox */
-  /* .lightbox {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 200ms linear;
-}
-
-.lightbox.is-open {
+input::-webkit-input-placeholder {
   opacity: 1;
-  pointer-events: initial;
+  transition: opacity 0.3s ease;
 }
-
-.lightbox__overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8);
+input::-moz-placeholder {
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }
-
-.lightbox__content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform: scale(0.9);
-  transition: transform 200ms ease-in-out;
+input:-moz-placeholder {
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }
-
-.lightbox__image {
-  width: auto;
-  height: auto;
-  max-height: 100vh;
-  max-width: 100vw;
+input:-ms-input-placeholder {
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }
-
-.lightbox.is-open .lightbox__content {
-  transform: scale(1);
+input:focus::-webkit-input-placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
-
-.lightbox__button {
-  position: absolute;
-  top: 8px;
-  right: 26px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  padding: 0;
-  margin: 0;
-  border: none;
-  border-radius: 50%;
-  background-color: transparent;
-  color: #fff;
-  cursor: pointer;
-  transition: background-color 200ms ease-in-out;
-  outline: none;
-  background-image: url('./images/icon-close.svg');
-  background-position: center;
-  background-size: 60%;
-  background-repeat: no-repeat;
+input:focus::-moz-placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
-
-.lightbox__button:hover,
-.lightbox__button:focus {
-  background-color: rgba(0, 0, 0, 0.5);
-} */
+input:focus:-moz-placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+input:focus:-ms-input-placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }

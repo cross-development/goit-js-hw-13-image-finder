@@ -45,6 +45,7 @@ function fetchImagesByApiService() {
         firstpos2: -25,
         context: document.querySelector('.header'),
       });
+
       return error({
         text: `Images not found. Try again! ${e.message}`,
         stack: myStack,
@@ -58,7 +59,7 @@ function insertListItems(items) {
   refs.gallery.insertAdjacentHTML('beforeend', markup);
 
   window.scrollTo({
-    top: document.documentElement.scrollHeight,
+    top: refs.form.clientHeight + refs.gallery.clientHeight,
     behavior: 'smooth',
   });
 }
